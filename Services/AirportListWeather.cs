@@ -60,8 +60,7 @@ namespace WebApiForTests.Services
             else if (Metar.Contains("CAVOK"))
             {
                 result = $"Metar: {Metar}\n"
-                    + $"✈️ Icao selecionado: {Icao}\n"
-                    + $"\n'/infoaero'\n"
+                    + $"\n✈️ Icao selecionado: {Icao}\n"
                     + $"\n📅 Metar confeccionado em {dateDD} de {ConvertDate(dateMM)} de {dateYY}, às {dateHH}:00 hora(s) (UTC).\n"
                     + $"\n☁️ Situação meteorológica:\n"
                     + $"\n🔴 Vento:" 
@@ -74,8 +73,7 @@ namespace WebApiForTests.Services
             else
             {
                 result = $"Metar: {Metar}\n"
-                    + $"✈️ Icao selecionado: {Icao}\n"
-                    + $"\n'/infoaero'\n"
+                    + $"\n✈️ Icao selecionado: {Icao}\n"
                     + $"\n📅 Metar confeccionado em {dateDD} de {ConvertDate(dateMM)} de {dateYY}, às {dateHH}:00 hora(s) (UTC).\n"
                     + $"\n☁️ Situação meteorológica:\n"
                     + $"\n🔴 Vento:" 
