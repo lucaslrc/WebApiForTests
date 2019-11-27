@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucas.costa\\Desktop\\WebApiForTests\\webapifortests.csproj": {}
+    "C:\\Users\\lucas.costa\\Desktop\\Testes\\WebApiForTests\\webapifortests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucas.costa\\Desktop\\WebApiForTests\\webapifortests.csproj": {
+    "C:\\Users\\lucas.costa\\Desktop\\Testes\\WebApiForTests\\webapifortests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas.costa\\Desktop\\WebApiForTests\\webapifortests.csproj",
+        "projectUniqueName": "C:\\Users\\lucas.costa\\Desktop\\Testes\\WebApiForTests\\webapifortests.csproj",
         "projectName": "webapifortests",
-        "projectPath": "C:\\Users\\lucas.costa\\Desktop\\WebApiForTests\\webapifortests.csproj",
+        "projectPath": "C:\\Users\\lucas.costa\\Desktop\\Testes\\WebApiForTests\\webapifortests.csproj",
         "packagesPath": "C:\\Users\\lucas.costa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas.costa\\Desktop\\WebApiForTests\\obj\\",
+        "outputPath": "C:\\Users\\lucas.costa\\Desktop\\Testes\\WebApiForTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
