@@ -9,17 +9,17 @@ namespace WebApiForTests.Controllers
     public class MetarController : ControllerBase
     {
         [HttpPost("decoder")]
-        public string Get([FromBody]MetarModel model)
+        public string Get([FromBody]IcaoModel model)
         {
-            if (string.IsNullOrEmpty(model.Metar))
+            if (string.IsNullOrEmpty(model.Icao))
             {
                 return "Metar vazio, por favor tente novamente.";
             }
             else
             {
-                var ALW = new AirportListWeather();
+                var ALW = new TranslateMetar();
                 
-                return ALW.GetWeatherInfo(model.Metar);
+                return ALW.Translate(model.Icao);
             }
         }
     }

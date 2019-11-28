@@ -48,19 +48,10 @@ namespace WebApiForTests.Services
 
             var result = string.Empty;
 
-            if (string.IsNullOrEmpty(Metar))
+            if (Metar.Contains("CAVOK"))
             {
-                return "Não foi possível simplificar o METAR, por favor digite um METAR válido.";
-            }
-            else if (!Metar.Contains("SB", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return "Não foi possível simplificar o METAR, esta função está disponível "
-                    + "apenas para alguns aeroportos federais brasileiros.";
-            }
-            else if (Metar.Contains("CAVOK"))
-            {
-                result = $"Metar: {Metar}\n"
-                    + $"\n✈️ Icao selecionado: {Icao}\n"
+                result = $"{Metar}\n"
+                    + $"✈️ Icao selecionado: {Icao}\n"
                     + $"\n📅 Metar confeccionado em {dateDD} de {ConvertDate(dateMM)} de {dateYY}, às {dateHH}:00 hora(s) (UTC).\n"
                     + $"\n☁️ Situação meteorológica:\n"
                     + $"\n🔴 Vento:" 
@@ -72,8 +63,8 @@ namespace WebApiForTests.Services
             }
             else
             {
-                result = $"Metar: {Metar}\n"
-                    + $"\n✈️ Icao selecionado: {Icao}\n"
+                result = $"{Metar}\n"
+                    + $"✈️ Icao selecionado: {Icao}\n"
                     + $"\n📅 Metar confeccionado em {dateDD} de {ConvertDate(dateMM)} de {dateYY}, às {dateHH}:00 hora(s) (UTC).\n"
                     + $"\n☁️ Situação meteorológica:\n"
                     + $"\n🔴 Vento:" 
