@@ -170,7 +170,12 @@ namespace WebApiForTests.Services
                     var variation1 = Metar.Substring(Metar.IndexOf("KT")).Substring(3, 3);
                     var variation2 = Metar.Substring(Metar.IndexOf("KT")).Substring(7, 3);
 
-                    if (Metar.Substring(32, 9).Contains("G"))
+                    if (variation.Substring(variation.IndexOf("V")).Substring(1, 1).Where(c => char.IsNumber(c)).Count() > 0 == false)
+                    {
+                        result = $"Direção: {windDirection}° (graus);\n"
+                            + $"Velocidade: {windSpeed}KT (nós).";
+                    }
+                    else if (Metar.Substring(32, 9).Contains("G"))
                     {
                         var gusts = gustsVerification.Substring(gustsVerification.IndexOf("G"), 3).Substring(1);
 
