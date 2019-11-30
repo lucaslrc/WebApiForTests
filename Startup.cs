@@ -20,6 +20,13 @@ namespace webapifortests
         {
             services.AddCors();
             services.AddControllers();
+
+
+            //Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", null);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +55,18 @@ namespace webapifortests
             {
                 endpoints.MapControllers();
             });
-        }
+
+            //Ativa o Swagger
+            app.UseSwagger();
+
+            // Ativa o Swagger UI
+            app.UseSwaggerUI(opt =>
+            {
+                opt.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoAPI V1");
+                opt.RoutePrefix = string.Empty;
+            });
+
+            //... código omitido
+            }
     }
 }
