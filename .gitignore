@@ -1,6 +1,6 @@
 .vscode
-bin/Debug/
-obj/Debug/
+/bin/Debug/
+/obj/Debug/
 Dockerfile
 .dockerignore
 /Properties/
