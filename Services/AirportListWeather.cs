@@ -240,7 +240,14 @@ namespace WebApiForTests.Services
 
                     foreach (Match match in Regex.Matches(variation, pattern, RegexOptions.IgnoreCase))
                     {
-                        resultVariation += $"{item.WeatherInfo} {match.Value.Substring(3, 3)}.\n";
+                        if (String.IsNullOrWhiteSpace(match.Value.Substring(3)))
+                        {
+                            resultVariation += $"{item.WeatherInfo} não informado.\n";
+                        }
+                        else
+                        {
+                            resultVariation += $"{item.WeatherInfo} {match.Value.Substring(3, 3)}.\n";
+                        }
                     }
                 }
             }
