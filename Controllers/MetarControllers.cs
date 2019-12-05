@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Air_BOT.Services;
+using Microsoft.AspNetCore.Mvc;
 using WebApiForTests.Models;
-using WebApiForTests.Services;
 
 namespace WebApiForTests.Controllers
 {
@@ -9,9 +9,9 @@ namespace WebApiForTests.Controllers
     public class MetarController : ControllerBase
     {
         [HttpPost("decoder")]
-        public string Get([FromBody]IcaoModel model)
+        public string Get([FromBody]MetarModel model)
         {
-            if (string.IsNullOrEmpty(model.Icao))
+            if (string.IsNullOrEmpty(model.Metar))
             {
                 return "Metar vazio, por favor tente novamente.";
             }
@@ -19,7 +19,7 @@ namespace WebApiForTests.Controllers
             {
                 var ALW = new TranslateMetar();
                 
-                return ALW.Translate(model.Icao);
+                return ALW.Translate(model.Metar);
             }
         }
     }

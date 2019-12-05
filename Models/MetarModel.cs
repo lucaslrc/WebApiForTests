@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApiForTests.Models
 {
-    public class IcaoModel
+    public class MetarModel
     {
         [Required]
-        public string Icao { get; set; }
+        public string Metar { get; set; }
     }
 }
