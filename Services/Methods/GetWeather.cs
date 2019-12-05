@@ -14,6 +14,14 @@ namespace Air_BOT.Services.Methods
             var resultWeather = string.Empty;
             var resultVariation = string.Empty;
 
+            string[] arrayWeather = {
+                resultWeather
+            };
+
+            string[] arrayVariations = {
+                resultVariation
+            };
+
             foreach (var item in ListW.Weather)
             {
                 if (Metar.Substring(Metar.IndexOf("KT")).Contains(item.WeatherTag))
@@ -24,7 +32,7 @@ namespace Air_BOT.Services.Methods
 
                     foreach (Match match in Regex.Matches(weather, pattern, RegexOptions.IgnoreCase))
                     {
-                        resultWeather += $"{item.WeatherInfo}\n";
+                        resultWeather += $"{item.WeatherInfo}";
                     }
                 }
             }
@@ -41,16 +49,15 @@ namespace Air_BOT.Services.Methods
                     {
                         if (String.IsNullOrWhiteSpace(match.Value.Substring(3)))
                         {
-                            resultVariation += $"{item.WeatherInfo} não informado.\n";
+                            resultVariation += $"{item.WeatherInfo} - altitude desconhecida";
                         }
                         else
                         {
-                            resultVariation += $"{item.WeatherInfo} {match.Value.Substring(3, 3)}.\n";
+                            resultVariation += $"{item.WeatherInfo} - altitude de {match.Value.Substring(3, 3)}ft\n";
                         }
                     }
                 }
             }
-
             if (resultWeather.Length == 0 || resultVariation.Length == 0)
             {
                 if (resultWeather.Length == 0)
@@ -64,8 +71,7 @@ namespace Air_BOT.Services.Methods
             }
             else
             {
-                return $"{resultWeather}"
-                     + $"{resultVariation}";
+                return $"{resultWeather}, {resultVariation}";
             }
         }
     }

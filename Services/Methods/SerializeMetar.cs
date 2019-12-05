@@ -3,32 +3,47 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Air_BOT.Services.Methods;
+using Newtonsoft.Json;
+using Json.NET;
+using Json.Net;
 using WebApiForTests.Models;
 
 namespace WebApiForTests.Services.Methods
 {
     public class SerializeMetar
     {
-        private GetVariationsWind gvw = new GetVariationsWind();
         private GetDirectionWind gdw = new GetDirectionWind();
-        private GetWindSpeedcs gds = new GetWindSpeedcs();
-        public void GetJson()
+        private GetWindSpeedcs gws = new GetWindSpeedcs();
+        private GetVisibility gtv = new GetVisibility();
+        private GetWeather gtw = new GetWeather();
+        
+        public string GetJson()
         {
-            var M = "2019112319 - METAR SBMG 231900Z 24023G41KT 240V320 9999 3000NW -RA SCT020TCU 27/19 Q1008=";
+            var M = "2019112217 - METAR SBCG 221700Z 03017KT 9999 VCSH VCTS BKN045 FEW050CB SCT100 32/20 Q1010=";
 
-            string WindDirection, WindSpeed;
+            string WindDirection, WindSpeed, Visibility;
+            
 
             WindDirection = gdw.GetWindDirection(M);
-            WindSpeed = gds.GetSpeedWind(M);
+            WindSpeed = gws.GetSpeedWind(M);
+            Visibility = gtv.GetVisibilityMetar(M);
+
+            var a = gtw.GetWeatherMetar(M);
+            string[] Weather = {
+                $"{a}\n"
+            };
 
             var obj = new JsonModel()
             {
                 WindDirection = WindDirection,
-                WindSpeed = WindSpeed 
+                WindSpeed = WindSpeed,
+                Visibility = Visibility,
+                Weather = Weather
             };
 
-            string json = JsonSerializer.Serialize(obj);
-            Console.WriteLine("_____________________  " + json);
+            string json = JsonConvert.SerializeObject(obj);
+            
+            return json;
         }
     }
 }

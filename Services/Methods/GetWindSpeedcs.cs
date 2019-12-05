@@ -9,8 +9,8 @@ namespace WebApiForTests.Services.Methods
         public string GetSpeedWind(string Metar)
         {
             var variation = Metar.Substring(Metar.IndexOf("KT"), 9).Substring(3);
-
             var windSpeed = Metar.Substring(35, 2);
+            var gustsVerification = Metar.Substring(32, 10);
 
             var result = string.Empty;
 
@@ -19,18 +19,16 @@ namespace WebApiForTests.Services.Methods
                 if (Metar.Contains("VRB"))
                 {
                     var vrbSpeed = Metar.Substring(Metar.IndexOf("VRB"), 5).Substring(3);
-                    result = $"{vrbSpeed}";
+                    result = $"{vrbSpeed}kt";
                 }
-                else if (!variation.Contains(item.WeatherTag) && variation.Contains("V"))
+                else if (Metar.Substring(32, 9).Contains("G"))
                 {
-                    if (variation.Substring(variation.IndexOf("V")).Any(c => char.IsNumber(c)))
-                    {
-                        result = $"{windSpeed}";
-                    }
-                    else
-                    {
-                        result = $"{windSpeed}";
-                    }
+                    var gusts = gustsVerification.Substring(gustsVerification.IndexOf("G"), 3).Substring(1);
+                    result =$"{windSpeed}kt com rajadas de {gusts}kt";
+                }
+                else
+                {
+                    result = $"{windSpeed}kt";
                 }
             }
             return result;

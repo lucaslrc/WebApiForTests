@@ -6,7 +6,6 @@ namespace WebApiForTests.Services.Methods
 {
     public class GetDirectionWind
     {
-        private GetVariationsWind getVariationsWind = new GetVariationsWind();
         private ListWeather ListW = new ListWeather();
         public string GetWindDirection(string Metar)
         {
@@ -21,13 +20,16 @@ namespace WebApiForTests.Services.Methods
                 if (Metar.Contains("VRB"))
                 {
                     var vrbSpeed = Metar.Substring(Metar.IndexOf("VRB"), 5).Substring(3);
-                    result = "Incerta";
+                    result = "Variante";
                 }
                 else if (!variation.Contains(item.WeatherTag) && variation.Contains("V"))
                 {
                     if (variation.Substring(variation.IndexOf("V")).Any(c => char.IsNumber(c)))
                     {
-                        result = getVariationsWind.GetVariation(Metar);
+                        var variation1 = Metar.Substring(Metar.IndexOf("KT")).Substring(3, 3);
+                        var variation2 = Metar.Substring(Metar.IndexOf("KT")).Substring(7, 3);
+
+                        result = $"{variation1} e {variation2}";
                     }
                     else
                     {

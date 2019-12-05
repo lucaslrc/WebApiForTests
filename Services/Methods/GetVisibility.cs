@@ -17,7 +17,7 @@ namespace Air_BOT.Services.Methods
 
             if (visibility.Substring(3, 12).Contains("9999"))
             {
-                resultVisibility = "Distância: Acima dos 10km (quilômetros).";
+                resultVisibility = "Acima dos 10km";
             }
             else if (visibility.Substring(3, 4).Where(c => char.IsLetter(c)).Count() > 0)
             {
@@ -40,7 +40,7 @@ namespace Air_BOT.Services.Methods
 
                             var result = conv / 1000;
 
-                            resultVisibility = $"Distância: {result.ToString()}km (quilômetros).";
+                            resultVisibility = $"{result.ToString()}km";
                         }
                     }
                 }
@@ -51,7 +51,7 @@ namespace Air_BOT.Services.Methods
 
                 var result = conv / 1000;
 
-                resultVisibility = $"Distância: {result.ToString()}km (quilômetros).";
+                resultVisibility = $"{result.ToString()}km";
             }
 
             return resultVisibility;
