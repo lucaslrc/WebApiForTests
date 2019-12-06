@@ -14,9 +14,7 @@ namespace Air_BOT.Services.Methods
 
         public List<InfoWeather> GetWeatherMetar(string Metar)
         {
-            List<InfoWeather> resultWeather = new List<InfoWeather>();
-
-            string[] resultVariation = {};
+            List<InfoWeather> resultTotal = new List<InfoWeather>();
 
             foreach (var item in ListW.Weather)
             {
@@ -28,7 +26,7 @@ namespace Air_BOT.Services.Methods
 
                     foreach (Match match in Regex.Matches(weather, pattern, RegexOptions.IgnoreCase))
                     {
-                        resultWeather.Add( new InfoWeather { Info = item.WeatherInfo});
+                        resultTotal.Add( new InfoWeather { Info = item.WeatherInfo});
                     }
                 }
             }
@@ -43,34 +41,26 @@ namespace Air_BOT.Services.Methods
 
                     foreach (Match match in Regex.Matches(variation, pattern, RegexOptions.IgnoreCase))
                     {
-                        for (int i = 0; i < resultVariation.Length; i++)
+                        if (String.IsNullOrWhiteSpace(match.Value.Substring(3)))
                         {
-                            if (String.IsNullOrWhiteSpace(match.Value.Substring(3)))
-                            {
-                                resultVariation[i] += $"{item.WeatherInfo} - altitude desconhecida";
-                            }
-                            else
-                            {
-                                resultVariation[i] += $"{item.WeatherInfo} - altitude de {match.Value.Substring(3, 3)}ft";
-                            }
+                            resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude desconhecida" } );
+                        }
+                        else
+                        {
+                            resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude de {match.Value.Substring(3, 3)}ft" } );
                         }
                     }
                 }
             }
-            if (resultWeather.Count == 0 || resultVariation.Length == 0)
+
+            if (resultTotal.Count == 0)
             {
-                if (resultWeather.Count == 0)
-                {
-                    return null;
-                }
-                else
-                {
-                    return resultWeather;
-                }
+                
+                return null;
             }
             else
             {
-                return resultWeather;
+                return resultTotal;
             }
         }
     }

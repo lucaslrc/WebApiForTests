@@ -11,6 +11,7 @@ namespace WebApiForTests.Models
         public string Visibility { get; set; }
         public ICollection<InfoWeather> Weather { get; set; }
         public string Temperature { get; set; }
+        public string DewPoint { get; set; }
         public string Pression { get; set; }
     }
 }

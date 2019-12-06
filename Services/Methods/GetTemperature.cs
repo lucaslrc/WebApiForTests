@@ -11,11 +11,9 @@ namespace Air_BOT.Services.Methods
             string b = new string(a);
             string c = new string(b.Substring(b.IndexOf("/")).Substring(1, 2));
 
-            string tLeft = new string(c.ToCharArray().Reverse().ToArray());
-            string tRight = Metar.Substring(Metar.IndexOf("/"), 3).Substring(1);
+            string temperature = new string(c.ToCharArray().Reverse().ToArray());
 
-            return $"Temperatura: {tLeft}°C;\n"
-                 + $"Ponto de orvalho: {tRight}°C.";
+            return temperature;
         }
     }
 }
