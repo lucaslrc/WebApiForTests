@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace Air_BOT.Services.Methods
@@ -10,7 +11,6 @@ namespace Air_BOT.Services.Methods
 
             string b = new string(a);
             string c = new string(b.Substring(b.IndexOf("/")).Substring(1, 2));
-
             string temperature = new string(c.ToCharArray().Reverse().ToArray());
 
             return temperature;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using Air_BOT.Services.Helpers;
 using WebApiForTests.Models;
@@ -47,7 +48,10 @@ namespace Air_BOT.Services.Methods
                         }
                         else
                         {
-                            resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude de {match.Value.Substring(3, 3)}ft" } );
+                            double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
+                            double FeetConvert = ConvertForInt*10 / 3.2808;
+                            resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude"
+                            + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m"});
                         }
                     }
                 }
