@@ -1,11 +1,9 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Air_BOT.Services.Methods;
-using Newtonsoft.Json;
-using Json.NET;
-using Json.Net;
 using WebApiForTests.Models;
 
 namespace WebApiForTests.Services.Methods
@@ -16,22 +14,18 @@ namespace WebApiForTests.Services.Methods
         private GetWindSpeedcs gws = new GetWindSpeedcs();
         private GetVisibility gtv = new GetVisibility();
         private GetWeather gtw = new GetWeather();
-        
+
         public string GetJson()
         {
-            var M = "2019112217 - METAR SBCG 221700Z 03017KT 9999 VCSH VCTS BKN045 FEW050CB SCT100 32/20 Q1010=";
+            string M = "2019112217 - METAR SBCG 221700Z 03017KT 9999 VCSH VCTS BKN045 FEW050CB SCT100 32/20 Q1010=";
 
             string WindDirection, WindSpeed, Visibility;
-            
 
             WindDirection = gdw.GetWindDirection(M);
             WindSpeed = gws.GetSpeedWind(M);
             Visibility = gtv.GetVisibilityMetar(M);
-
-            var a = gtw.GetWeatherMetar(M);
-            string[] Weather = {
-                $"{a}\n"
-            };
+            string[] Weather = gtw.GetWeatherMetar(M);
+            
 
             var obj = new JsonModel()
             {
@@ -41,9 +35,9 @@ namespace WebApiForTests.Services.Methods
                 Weather = Weather
             };
 
-            string json = JsonConvert.SerializeObject(obj);
-            
-            return json;
+            string jsonString = JsonSerializer.Serialize(obj);
+
+            return jsonString;
         }
     }
 }

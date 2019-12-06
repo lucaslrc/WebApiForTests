@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Air_BOT.Services.Helpers;
+using WebApiForTests.Models;
 
 namespace Air_BOT.Services.Methods
 {
@@ -9,18 +11,10 @@ namespace Air_BOT.Services.Methods
         private ListWeather ListW = new ListWeather();
         private ListVariations ListV = new ListVariations();
 
-        public string GetWeatherMetar(string Metar)
+        public string[] GetWeatherMetar(string Metar)
         {
-            var resultWeather = string.Empty;
-            var resultVariation = string.Empty;
-
-            string[] arrayWeather = {
-                resultWeather
-            };
-
-            string[] arrayVariations = {
-                resultVariation
-            };
+            List<string> resultWeather = new List<string>();
+            string[] resultVariation = {};
 
             foreach (var item in ListW.Weather)
             {
@@ -32,7 +26,7 @@ namespace Air_BOT.Services.Methods
 
                     foreach (Match match in Regex.Matches(weather, pattern, RegexOptions.IgnoreCase))
                     {
-                        resultWeather += $"{item.WeatherInfo}";
+                        // resultWeather.Add(item.WeatherInfo);
                     }
                 }
             }
@@ -47,31 +41,34 @@ namespace Air_BOT.Services.Methods
 
                     foreach (Match match in Regex.Matches(variation, pattern, RegexOptions.IgnoreCase))
                     {
-                        if (String.IsNullOrWhiteSpace(match.Value.Substring(3)))
+                        for (int i = 0; i < resultVariation.Length; i++)
                         {
-                            resultVariation += $"{item.WeatherInfo} - altitude desconhecida";
-                        }
-                        else
-                        {
-                            resultVariation += $"{item.WeatherInfo} - altitude de {match.Value.Substring(3, 3)}ft\n";
+                            if (String.IsNullOrWhiteSpace(match.Value.Substring(3)))
+                            {
+                                resultVariation[i] += $"{item.WeatherInfo} - altitude desconhecida";
+                            }
+                            else
+                            {
+                                resultVariation[i] += $"{item.WeatherInfo} - altitude de {match.Value.Substring(3, 3)}ft";
+                            }
                         }
                     }
                 }
             }
-            if (resultWeather.Length == 0 || resultVariation.Length == 0)
+            if (resultWeather.Count == 0 || resultVariation.Length == 0)
             {
-                if (resultWeather.Length == 0)
+                if (resultWeather.Count == 0)
                 {
                     return resultVariation;
                 }
                 else
                 {
-                    return resultWeather;
+                    return resultWeather.ToArray();
                 }
             }
             else
             {
-                return $"{resultWeather}, {resultVariation}";
+                return resultWeather.ToArray();
             }
         }
     }

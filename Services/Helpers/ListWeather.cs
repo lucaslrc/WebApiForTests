@@ -7,8 +7,8 @@ namespace Air_BOT.Services.Helpers
     {
         public List<WeatherModel> Weather = new List<WeatherModel>() {
             new WeatherModel {WeatherTag = "CAVOK", WeatherInfo = "CAVOK (Ceiling And Visibility OK)"},
-            new WeatherModel {WeatherTag = "VCTS", WeatherInfo = "Tempestade na vizinhança do aeroporto"},
-            new WeatherModel {WeatherTag = "VCSH", WeatherInfo = "Chuva leve na vizinhança do aeroporto"},
+            new WeatherModel {WeatherTag = "VCTS", WeatherInfo = "Tempestade nas proximidades do aeroporto"},
+            new WeatherModel {WeatherTag = "VCSH", WeatherInfo = "Chuva leve nas proximidades do aeroporto"},
             new WeatherModel {WeatherTag = "TCU", WeatherInfo = "Presença de 'Tower Cumulus'"},
             new WeatherModel {WeatherTag = "CB", WeatherInfo = "Presença de 'Cumulus Nimbus'"},
             new WeatherModel {WeatherTag = "RETSRA", WeatherInfo = "Chuva e trovoada recente"},
