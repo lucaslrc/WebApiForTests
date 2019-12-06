@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.Json;
@@ -20,12 +21,11 @@ namespace WebApiForTests.Services.Methods
             string M = "2019112217 - METAR SBCG 221700Z 03017KT 9999 VCSH VCTS BKN045 FEW050CB SCT100 32/20 Q1010=";
 
             string WindDirection, WindSpeed, Visibility;
+            List<InfoWeather> Weather = gtw.GetWeatherMetar(M);
 
             WindDirection = gdw.GetWindDirection(M);
             WindSpeed = gws.GetSpeedWind(M);
             Visibility = gtv.GetVisibilityMetar(M);
-            string[] Weather = gtw.GetWeatherMetar(M);
-            
 
             var obj = new JsonModel()
             {

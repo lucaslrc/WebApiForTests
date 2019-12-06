@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Air_BOT.Services.Helpers;
 using WebApiForTests.Models;
@@ -11,9 +12,10 @@ namespace Air_BOT.Services.Methods
         private ListWeather ListW = new ListWeather();
         private ListVariations ListV = new ListVariations();
 
-        public string[] GetWeatherMetar(string Metar)
+        public List<InfoWeather> GetWeatherMetar(string Metar)
         {
-            List<string> resultWeather = new List<string>();
+            List<InfoWeather> resultWeather = new List<InfoWeather>();
+
             string[] resultVariation = {};
 
             foreach (var item in ListW.Weather)
@@ -26,7 +28,7 @@ namespace Air_BOT.Services.Methods
 
                     foreach (Match match in Regex.Matches(weather, pattern, RegexOptions.IgnoreCase))
                     {
-                        // resultWeather.Add(item.WeatherInfo);
+                        resultWeather.Add( new InfoWeather { Info = item.WeatherInfo});
                     }
                 }
             }
@@ -59,16 +61,16 @@ namespace Air_BOT.Services.Methods
             {
                 if (resultWeather.Count == 0)
                 {
-                    return resultVariation;
+                    return null;
                 }
                 else
                 {
-                    return resultWeather.ToArray();
+                    return resultWeather;
                 }
             }
             else
             {
-                return resultWeather.ToArray();
+                return resultWeather;
             }
         }
     }
