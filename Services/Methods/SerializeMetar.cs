@@ -26,7 +26,7 @@ namespace WebApiForTests.Services.Methods
             string M = "2019112217 - METAR SBCG 221700Z 03017KT 9999 VCSH VCTS BKN045 FEW050CB SCT100 32/20 Q1010=";
 
             string Date, Hour, WindDirection, WindSpeed, Visibility, Temperature, DewPoint, Pression;
-            List<InfoWeather> Weather;
+            string[] Weather;
 
             Date = Gdate.ConvertDateMetar(M);
             Hour = Ghour.ConvertHourMetar(M);

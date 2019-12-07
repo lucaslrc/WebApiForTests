@@ -13,10 +13,16 @@ namespace Air_BOT.Services.Methods
         private ListWeather ListW = new ListWeather();
         private ListVariations ListV = new ListVariations();
 
-        public List<InfoWeather> GetWeatherMetar(string Metar)
+        public string[] GetWeatherMetar(string Metar)
         {
-            List<InfoWeather> resultTotal = new List<InfoWeather>();
+            string[] resultTotal = {
+                "1",
+                "2",
+                "3",
+                "4"
+            };
 
+            
             foreach (var item in ListW.Weather)
             {
                 if (Metar.Substring(Metar.IndexOf("KT")).Contains(item.WeatherTag))
@@ -27,7 +33,11 @@ namespace Air_BOT.Services.Methods
 
                     foreach (Match match in Regex.Matches(weather, pattern, RegexOptions.IgnoreCase))
                     {
-                        resultTotal.Add( new InfoWeather { Info = item.WeatherInfo});
+                        // resultTotal.Add( new InfoWeather { Info = item.WeatherInfo});
+                        for (int i = 0; i < resultTotal[i].Length; i++)
+                        {
+                            resultTotal[i] = item.WeatherInfo;
+                        }
                     }
                 }
             }
@@ -44,22 +54,21 @@ namespace Air_BOT.Services.Methods
                     {
                         if (String.IsNullOrWhiteSpace(match.Value.Substring(3)))
                         {
-                            resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude desconhecida" } );
+                            // resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude desconhecida" } );
                         }
                         else
                         {
-                            double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
-                            double FeetConvert = ConvertForInt*10 / 3.2808;
-                            resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude"
-                            + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m"});
+                            // double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
+                            // double FeetConvert = ConvertForInt*10 / 3.2808;
+                            // resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude"
+                            // + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m"});
                         }
                     }
                 }
             }
 
-            if (resultTotal.Count == 0)
+            if (resultTotal.Length == 0)
             {
-                
                 return null;
             }
             else
