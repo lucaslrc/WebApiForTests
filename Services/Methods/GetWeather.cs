@@ -13,16 +13,10 @@ namespace Air_BOT.Services.Methods
         private ListWeather ListW = new ListWeather();
         private ListVariations ListV = new ListVariations();
 
-        public string[] GetWeatherMetar(string Metar)
+        public List<string> GetWeatherMetar(string Metar)
         {
-            string[] resultTotal = {
-                "1",
-                "2",
-                "3",
-                "4"
-            };
+            List<string> infoWeather = new List<string>();
 
-            
             foreach (var item in ListW.Weather)
             {
                 if (Metar.Substring(Metar.IndexOf("KT")).Contains(item.WeatherTag))
@@ -33,11 +27,7 @@ namespace Air_BOT.Services.Methods
 
                     foreach (Match match in Regex.Matches(weather, pattern, RegexOptions.IgnoreCase))
                     {
-                        // resultTotal.Add( new InfoWeather { Info = item.WeatherInfo});
-                        for (int i = 0; i < resultTotal[i].Length; i++)
-                        {
-                            resultTotal[i] = item.WeatherInfo;
-                        }
+                        infoWeather.Add(item.WeatherInfo);
                     }
                 }
             }
@@ -67,13 +57,13 @@ namespace Air_BOT.Services.Methods
                 }
             }
 
-            if (resultTotal.Length == 0)
+            if (infoWeather.Count == 0)
             {
                 return null;
             }
             else
             {
-                return resultTotal;
+                return infoWeather;
             }
         }
     }
