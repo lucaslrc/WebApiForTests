@@ -9,11 +9,13 @@ namespace WebApiForTests.Services.Methods
         private ListWeather ListW = new ListWeather();
         public string GetWindDirection(string Metar)
         {
+            var result = string.Empty;
+
             var variation = Metar.Substring(Metar.IndexOf("KT"), 9).Substring(3);
+            Console.WriteLine($"V = {variation}");
 
             var windDirection = Metar.Substring(32, 3);
-
-            var result = string.Empty;
+            Console.WriteLine($"WD = {windDirection}");
 
             foreach (var item in ListW.Weather)
             {
@@ -31,10 +33,10 @@ namespace WebApiForTests.Services.Methods
 
                         result = $"{variation1} e {variation2}";
                     }
-                    else
-                    {
-                        result = $"{windDirection}";
-                    }
+                }
+                else
+                {
+                    result = $"{windDirection}";
                 }
             }
             return result;
