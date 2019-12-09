@@ -12,10 +12,8 @@ namespace WebApiForTests.Services.Methods
             var result = string.Empty;
 
             var variation = Metar.Substring(Metar.IndexOf("KT"), 9).Substring(3);
-            Console.WriteLine($"V = {variation}");
 
             var windDirection = Metar.Substring(32, 3);
-            Console.WriteLine($"WD = {windDirection}");
 
             foreach (var item in ListW.Weather)
             {
