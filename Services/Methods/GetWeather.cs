@@ -50,7 +50,7 @@ namespace Air_BOT.Services.Methods
                         {
                             double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
                             double FeetConvert = ConvertForInt*100 / 3.2808;
-                            infoWeather.Add(new InfoWeather {Info = $"{item.WeatherInfo} - altitude"
+                            infoWeather.Add(new InfoWeather {Info = $"{item.WeatherInfo} - altitude "
                                 + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m"} );
                         }
                     }
