@@ -44,14 +44,14 @@ namespace Air_BOT.Services.Methods
                     {
                         if (String.IsNullOrWhiteSpace(match.Value.Substring(3)))
                         {
-                            // resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude desconhecida" } );
+                            infoWeather.Add($"{item.WeatherInfo} - altitude desconhecida");
                         }
                         else
                         {
-                            // double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
-                            // double FeetConvert = ConvertForInt*10 / 3.2808;
-                            // resultTotal.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude"
-                            // + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m"});
+                            double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
+                            double FeetConvert = ConvertForInt*10 / 3.2808;
+                            infoWeather.Add($"{item.WeatherInfo} - altitude"
+                                + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m");
                         }
                     }
                 }

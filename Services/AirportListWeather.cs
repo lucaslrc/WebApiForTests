@@ -13,7 +13,7 @@ namespace Air_BOT.Services
 
         public string GetWeatherInfo(string Metar)
         {
-            return SM.GetJson();
+            return SM.GetJson(Metar);
         }
         
     }
