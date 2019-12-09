@@ -24,7 +24,7 @@ namespace WebApiForTests.Services.Methods
         public string GetJson(string Metar)
         {
             string Date, Hour, WindDirection, WindSpeed, Visibility, Temperature, DewPoint, Pression;
-            List<string> Weather;
+            List<InfoWeather> Weather;
 
             Date = Gdate.ConvertDateMetar(Metar);
             Hour = Ghour.ConvertHourMetar(Metar);
