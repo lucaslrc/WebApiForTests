@@ -12,7 +12,7 @@ namespace Air_BOT.Services.Methods
 
             result = $"{Pression.Substring(Pression.IndexOf("Q")).Substring(1, 4)} hPa";
 
-            return result;
+            return $"QNH: {result}";
         }
     }
 }

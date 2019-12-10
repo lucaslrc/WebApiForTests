@@ -54,7 +54,14 @@ namespace Air_BOT.Services.Methods
                 resultVisibility = $"{result.ToString()}km";
             }
 
-            return resultVisibility;
+            if (String.IsNullOrEmpty(resultVisibility))
+            {
+                return "Não informado";
+            }
+            else
+            {
+                return $"Distância: {resultVisibility}";
+            }
         }
     }
 }
