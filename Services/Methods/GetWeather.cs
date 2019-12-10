@@ -13,9 +13,9 @@ namespace Air_BOT.Services.Methods
         private ListWeather ListW = new ListWeather();
         private ListVariations ListV = new ListVariations();
 
-        public List<InfoWeather> GetWeatherMetar(string Metar)
+        public string[] GetWeatherMetar(string Metar)
         {
-            List<InfoWeather> infoWeather = new List<InfoWeather>();
+            List<string> infoWeather = new List<string>();
 
             foreach (var item in ListW.Weather)
             {
@@ -27,7 +27,7 @@ namespace Air_BOT.Services.Methods
 
                     foreach (Match match in Regex.Matches(weather, pattern, RegexOptions.IgnoreCase))
                     {
-                        infoWeather.Add(new InfoWeather {Info = item.WeatherInfo} );
+                        infoWeather.Add(item.WeatherInfo);
                     }
                 }
             }
@@ -44,14 +44,14 @@ namespace Air_BOT.Services.Methods
                     {
                         if (String.IsNullOrWhiteSpace(match.Value.Substring(3)))
                         {
-                            infoWeather.Add(new InfoWeather { Info = $"{item.WeatherInfo} - altitude desconhecida"} );
+                            infoWeather.Add($"{item.WeatherInfo} - altitude desconhecida");
                         }
                         else
                         {
                             double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
                             double FeetConvert = ConvertForInt*100 / 3.2808;
-                            infoWeather.Add(new InfoWeather {Info = $"{item.WeatherInfo} - altitude "
-                                + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m"} );
+                            infoWeather.Add($"{item.WeatherInfo} - altitude "
+                                + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m");
                         }
                     }
                 }
@@ -63,7 +63,7 @@ namespace Air_BOT.Services.Methods
             }
             else
             {
-                return infoWeather;
+                return infoWeather.ToArray();
             }
         }
     }
