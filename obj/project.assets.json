@@ -3340,24 +3340,30 @@
     ]
   },
   "packageFolders": {
-    "/home/lrc/.nuget/packages/": {}
+    "C:\\Users\\lucas.costa\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/lrc/Documents/WEB/WebApiForTests/webapifortests.csproj",
+      "projectUniqueName": "C:\\Users\\lucas.costa\\Desktop\\Testes\\WebApiForTests\\webapifortests.csproj",
       "projectName": "webapifortests",
-      "projectPath": "/home/lrc/Documents/WEB/WebApiForTests/webapifortests.csproj",
-      "packagesPath": "/home/lrc/.nuget/packages/",
-      "outputPath": "/home/lrc/Documents/WEB/WebApiForTests/obj/",
+      "projectPath": "C:\\Users\\lucas.costa\\Desktop\\Testes\\WebApiForTests\\webapifortests.csproj",
+      "packagesPath": "C:\\Users\\lucas.costa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lucas.costa\\Desktop\\Testes\\WebApiForTests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/home/lrc/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\lucas.costa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3389,12 +3395,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -3403,7 +3403,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

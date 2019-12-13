@@ -15,12 +15,16 @@ namespace WebApiForTests.Services.Methods
 
             var windDirection = Metar.Substring(32, 3);
 
+            Console.WriteLine($"{windDirection} D.");
+
             foreach (var item in ListW.Weather)
             {
                 if (Metar.Contains("VRB"))
                 {
                     var vrbSpeed = Metar.Substring(Metar.IndexOf("VRB"), 5).Substring(3);
                     result = "Variante";
+
+                    Console.WriteLine(result + "Passei em VRB");
                 }
                 else if (!variation.Contains(item.WeatherTag) && variation.Contains("V"))
                 {
@@ -30,11 +34,13 @@ namespace WebApiForTests.Services.Methods
                         var variation2 = Metar.Substring(Metar.IndexOf("KT")).Substring(7, 3);
 
                         result = $"{variation1} e {variation2}";
+
+                        Console.WriteLine(result + "Passei em V");
                     }
                 }
                 else
                 {
-                    result = $"{windDirection}";
+                    result = windDirection;
                 }
             }
             return result;

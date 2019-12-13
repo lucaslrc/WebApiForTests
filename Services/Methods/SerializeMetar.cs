@@ -23,30 +23,30 @@ namespace WebApiForTests.Services.Methods
 
         public string GetJson(string Metar)
         {
-            string Date, Hour, WindDirection, WindSpeed, Visibility, Temperature, DewPoint, Pression;
-            string[] Weather;
+            string date, hour, windDirection, windSpeed, visibility, temperature, dewPoint, pression;
+            string[] weather;
 
-            Date = Gdate.ConvertDateMetar(Metar);
-            Hour = Ghour.ConvertHourMetar(Metar);
-            WindDirection = Gdirection.GetWindDirection(Metar);
-            WindSpeed = Gspeed.GetSpeedWind(Metar);
-            Visibility = Gvisibility.GetVisibilityMetar(Metar);
-            Weather = Gweather.GetWeatherMetar(Metar);
-            Temperature = Gtemperature.GetTemperatureMetar(Metar);
-            DewPoint = GdewPoint.GetDewPointMetar(Metar);
-            Pression = Gpression.GetPressionMetar(Metar);
+            date = Gdate.ConvertDateMetar(Metar);
+            hour = Ghour.ConvertHourMetar(Metar);
+            windDirection = Gdirection.GetWindDirection(Metar);
+            windSpeed = Gspeed.GetSpeedWind(Metar);
+            visibility = Gvisibility.GetVisibilityMetar(Metar);
+            weather = Gweather.GetWeatherMetar(Metar);
+            temperature = Gtemperature.GetTemperatureMetar(Metar);
+            dewPoint = GdewPoint.GetDewPointMetar(Metar);
+            pression = Gpression.GetPressionMetar(Metar);
 
             var obj = new JsonModel()
             {
-                Date = Date,
-                Hour = Hour,
-                WindDirection = WindDirection,
-                WindSpeed = WindSpeed,
-                Visibility = Visibility,
-                Weather = Weather,
-                Temperature = Temperature,
-                DewPoint = DewPoint,
-                Pression = Pression
+                Date = date,
+                Hour = hour,
+                WindDirection = windDirection,
+                WindSpeed = windSpeed,
+                Visibility = visibility,
+                Weather = weather,
+                Temperature = temperature,
+                DewPoint = dewPoint,
+                Pression = pression
             };
 
             string jsonString = JsonSerializer.Serialize(obj);
