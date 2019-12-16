@@ -21,7 +21,7 @@ namespace Air_BOT.Services.Helpers
             new WeatherModel {WeatherTag = "SH", WeatherInfo = "Pancadas de chuva"},
             new WeatherModel {WeatherTag = "HZ", WeatherInfo = "Névoa Seca"},
             new WeatherModel {WeatherTag = "BR", WeatherInfo = "Névoa úmida"},
-            new WeatherModel {WeatherTag = "FG", WeatherInfo = "Nevoeiro"},
+            new WeatherModel {WeatherTag = "FG", WeatherInfo = "Nevoeiro "},
             new WeatherModel {WeatherTag = "GR", WeatherInfo = "Granizo"}
         };
     }
