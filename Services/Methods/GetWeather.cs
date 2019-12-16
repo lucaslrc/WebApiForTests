@@ -48,10 +48,22 @@ namespace Air_BOT.Services.Methods
                         }
                         else
                         {
-                            double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
-                            double FeetConvert = ConvertForInt*100 / 3.2808;
-                            infoWeather.Add($"{item.WeatherInfo} - altitude "
-                                + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m");
+                            string NumberString = match.Value.Substring(3, 3);
+
+                            if (NumberString.Substring(0).Contains("0") && NumberString.Substring(0).Contains("0"))
+                            {
+                                double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
+                                double FeetConvert = ConvertForInt*100 / 3.281;
+                                infoWeather.Add($"{item.WeatherInfo} - altitude "
+                                    + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m");
+                            }
+                            else
+                            {
+                                double ConvertForInt = Double.Parse(match.Value.Substring(3, 3));
+                                double FeetConvert = ConvertForInt*10 / 3.281;
+                                infoWeather.Add($"{item.WeatherInfo} - altitude "
+                                    + $"de {match.Value.Substring(3, 3)}ft = {FeetConvert.ToString("F1", CultureInfo.InvariantCulture)}m");
+                            }
                         }
                     }
                 }

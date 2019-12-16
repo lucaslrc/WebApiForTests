@@ -38,10 +38,8 @@ namespace WebApiForTests.Services.Methods
                         Console.WriteLine(result + "Passei em V");
                     }
                 }
-                else
-                {
-                    result = windDirection;
-                }
+                
+                result = windDirection;
             }
             return result;
         }
